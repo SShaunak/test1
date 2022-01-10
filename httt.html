@@ -1,0 +1,140 @@
+
+
+
+     <!-- THIS IS GET ELEMENT BY CLASS>
+-----------------------------------------
+<!DOCTYPE html>
+<html>
+<body>
+
+<p class="bca">This line dosent have color</p>
+<p class="mca">This line has color</p>
+
+<p>click here to change color</p>
+<button onclick="myFunction()"> Try it </button>
+
+<script>
+function myFunction() {
+  var x = document.getElementsByClassName("bca");
+  x[0].style.color = "red";
+}
+
+</script>
+
+
+</body>
+</html>
+
+
+----------------------------------------------------------
+               DOM CALCULATOR
+----------------------------------------------------------
+<html>
+<head>
+<title> Dom calculator </title>
+</head>
+<body>
+<script>
+
+function add()
+{
+	var num1, num2, res=0;
+	num1=Number(document.getElementById("first").value);
+	num2=Number(document.getElementById("second").value);
+	res=num1+num2;
+	document.getElementById("result").value=res;
+}
+
+function sub()
+{
+	var num1, num2, res=0;
+	num1=Number(document.getElementById("first").value);
+	num2=Number(document.getElementById("second").value);
+	res=num1-num2;
+	document.getElementById("result").value=res;
+}
+
+function mul()
+{
+	var num1, num2, res=0;
+	num1=Number(document.getElementById("first").value);
+	num2=Number(document.getElementById("second").value);
+	res=num1*num2;
+	document.getElementById("result").value=res;
+}
+
+function div()
+{
+	var num1, num2, res=0;
+	num1=Number(document.getElementById("first").value);
+	num2=Number(document.getElementById("second").value);
+	res=num1/num2;
+	document.getElementById("result").value=res;
+}
+
+</script>
+Enter the number: <input id="first" >
+<br><br>
+Enter the second number: <input id="second">
+<br><br>
+
+<input  type="button" value="+" onclick="add()">
+<input  type="button" value="-" onclick="sub()">
+<input  type="button" value="*" onclick="mul()">
+<input  type="button" value="/" onclick="div()">
+
+<br><br>
+result:<input id="result">
+
+</body>
+</html>
+
+
+----------------------------------------------------------
+               CRUD PHP
+----------------------------------------------------------
+
+
+<html>
+<head>
+<title> login page </title>
+</head>
+<body>
+<form action="connect.php" method="POST">
+
+<lable>USERNAME</lable>
+<input type="text" name="name">
+<br><br>
+
+<lable>EMAIL ID</lable>
+<input type="text" name="email">
+<br><br>
+
+<lable>PASSWORD</lable>
+<input type="password" name="password">
+<br><br>
+
+<input type="submit" value="submit">
+</body>
+</html>
+
+
+<?php
+$name=$_POST["name"];
+$password=$_POST["password"];
+
+$conn = new mysqli('localhost','root','','exa1');
+if($conn->connect_error)
+{
+     die('connection failed: '. $conn->connect_error);
+}
+else
+{
+        $stmt = $conn->prepare("insert into regi1(username,password)values(?,?)");
+        $stmt->bind_param("ss",$name,$password);
+        $stmt->execute();
+    echo "Registration Successful...";
+        $stmt->close();
+        $conn->close();
+}
+?>
